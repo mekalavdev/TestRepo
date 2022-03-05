@@ -9,6 +9,7 @@ namespace CRUD_Demo.Mapper
         public AutoMapperProfile()
         {
             CreateMap<Employee, EmployeeModel>();
+            CreateMap<EmployeeModel, Employee>();
         }
     }
 }

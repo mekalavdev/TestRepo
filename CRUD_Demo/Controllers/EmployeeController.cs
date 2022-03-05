@@ -39,14 +39,19 @@ namespace CRUD_Demo.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllEmployeeById")]
-        public ApiResponse GetAllEmployeeById(int empId)
+        [Route("GetEmployeeById")]
+        public ApiResponse GetEmployeeById(int empId)
         {
             string responseMessage = string.Empty;
             try
             {
-                var userInfo = this.employeeService.GetEmployeeById(empId);
-                return new ApiResponse(responseMessage, userInfo, (int)HttpStatusCode.OK);
+                var empInfo = this.employeeService.GetEmployeeById(empId);
+                if (empInfo != null)
+                {
+                    return new ApiResponse(responseMessage, empInfo, (int)HttpStatusCode.OK);
+                }
+                responseMessage = LabelConstants.EmpNotFountMsg;
+                return new ApiResponse(responseMessage, empInfo, (int)HttpStatusCode.OK);
             }
             catch (Exception ex)
             {

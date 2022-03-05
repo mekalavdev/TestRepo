@@ -18,7 +18,10 @@ namespace CRUD_Demo.Services
             unitOfWork = new UnitOfWork();
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// To get all employee details.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<EmployeeModel> GetEmployees()
         {
             try
@@ -32,12 +35,19 @@ namespace CRUD_Demo.Services
             }
         }
 
+        /// <summary>
+        /// To get employee by id
+        /// </summary>
+        /// <param name="empId">Employee Id.</param>
+        /// <returns>Returns employee details.</returns>
         public EmployeeModel GetEmployeeById(int empId)
         {
             try
             {
                 var getEmployee = unitOfWork.EmployeeRepository.Get(x => x.EmpId == empId)?.FirstOrDefault();
-                return mapper.Map<EmployeeModel>(getEmployee);
+                EmployeeModel result = new EmployeeModel();
+                MapModels(getEmployee, out result);
+                return result;
             }
             catch (Exception ex)
             {
@@ -49,12 +59,24 @@ namespace CRUD_Demo.Services
         {
             try
             {
-
+                //To be implemented
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// Genrics Implementation - Returns R type
+        /// </summary>
+        /// <typeparam name="T">Source Model Type.</typeparam>
+        /// <typeparam name="R">Destination Model Type.</typeparam>
+        /// <param name="source">Source Value.</param>
+        /// <param name="output">Destination Value.</param>
+        private void MapModels<T, R>(T source, out R output)
+        {
+            output = mapper.Map<R>(source);
         }
 
     }
