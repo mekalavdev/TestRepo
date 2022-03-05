@@ -21,4 +21,12 @@ namespace DataLayer.Repository
 
         }
     }
+
+    public class EmployeeRepository : BaseRepository<Employee>
+    {
+        public EmployeeRepository(EmployeeContext _db) : base(_db)
+        {
+
+        }
+    }
 }

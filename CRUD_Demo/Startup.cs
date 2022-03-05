@@ -1,15 +1,11 @@
+using CRUD_Demo.Services;
+using Domain.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CRUD_Demo
 {
@@ -27,6 +23,14 @@ namespace CRUD_Demo
         {
             services.AddControllers();
             services.AddSwaggerGen();
+
+            //Services
+            services.AddScoped<IEmployeeService, EmployeeService>();
+
+            //mapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            ////services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

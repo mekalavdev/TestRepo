@@ -42,11 +42,12 @@ namespace DataLayer.UnitOfWork
 
         private DesignationRepository _designationRepository;
 
-        
+        private EmployeeRepository _employeeRepository;
 
         public DepartmentRepository DepartmentRepository => _departmentRepository ?? (_departmentRepository = new DepartmentRepository(Context));
 
         public DesignationRepository DesignationRepository => _designationRepository ?? (_designationRepository = new DesignationRepository(Context));
+        public EmployeeRepository EmployeeRepository => _employeeRepository ?? (_employeeRepository = new EmployeeRepository(Context));
 
       
         #endregion

@@ -3,14 +3,16 @@ using DataLayer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20220305063847_add-empTable")]
+    partial class addempTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,31 +68,6 @@ namespace DataLayer.Migrations
                     b.ToTable("Designation", "dbo");
                 });
 
-            modelBuilder.Entity("DataLayer.Data.Model.Employee", b =>
-                {
-                    b.Property<int>("EmpId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("DesignationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmailId")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
-                    b.HasKey("EmpId");
-
-                    b.HasIndex("DesignationId");
-
-                    b.ToTable("Employee", "dbo");
-                });
-
             modelBuilder.Entity("DataLayer.Data.Model.Designation", b =>
                 {
                     b.HasOne("DataLayer.Data.Model.Department", "DepartmentInfo")
@@ -100,17 +77,6 @@ namespace DataLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("DepartmentInfo");
-                });
-
-            modelBuilder.Entity("DataLayer.Data.Model.Employee", b =>
-                {
-                    b.HasOne("DataLayer.Data.Model.Designation", "DesignationInfo")
-                        .WithMany()
-                        .HasForeignKey("DesignationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DesignationInfo");
                 });
 #pragma warning restore 612, 618
         }
