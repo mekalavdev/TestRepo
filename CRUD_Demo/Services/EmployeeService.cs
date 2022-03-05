@@ -4,6 +4,7 @@ using Domain.Interface;
 using Domain.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CRUD_Demo.Services
 {
@@ -30,5 +31,31 @@ namespace CRUD_Demo.Services
                 throw ex;
             }
         }
+
+        public EmployeeModel GetEmployeeById(int empId)
+        {
+            try
+            {
+                var getEmployee = unitOfWork.EmployeeRepository.Get(x => x.EmpId == empId)?.FirstOrDefault();
+                return mapper.Map<EmployeeModel>(getEmployee);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void AddEmployee(EmployeeModel employee)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

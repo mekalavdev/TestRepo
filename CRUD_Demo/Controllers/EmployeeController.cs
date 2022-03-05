@@ -1,4 +1,5 @@
-﻿using DataLayer.Data.Model;
+﻿using Common.Constants;
+using DataLayer.Data.Model;
 using DataLayer.UnitOfWork;
 using Domain.Interface;
 using Domain.Model;
@@ -25,17 +26,47 @@ namespace CRUD_Demo.Controllers
         [Route("GetAllEmployees")]
         public ApiResponse GetAllEmployees()
         {
-            int statusCode = (int)HttpStatusCode.NoContent;
             string responseMessage = string.Empty;
             try
             {
                 var userInfo = this.employeeService.GetEmployees();
-                statusCode = (int)System.Net.HttpStatusCode.OK;
-                return new ApiResponse(responseMessage, userInfo, statusCode);
+                return new ApiResponse(responseMessage, userInfo, (int)HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
-                return new ApiResponse("Internal Server Error");
+                return new ApiResponse(LabelConstants.InternalServerErrorMsg);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAllEmployeeById")]
+        public ApiResponse GetAllEmployeeById(int empId)
+        {
+            string responseMessage = string.Empty;
+            try
+            {
+                var userInfo = this.employeeService.GetEmployeeById(empId);
+                return new ApiResponse(responseMessage, userInfo, (int)HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(LabelConstants.InternalServerErrorMsg);
+            }
+        }
+
+        [HttpPost]
+        [Route("AddEmployee")]
+        public ApiResponse AddEmployee(EmployeeModel employee)
+        {
+            string responseMessage = string.Empty;
+            try
+            {
+                this.employeeService.AddEmployee(employee);
+                return new ApiResponse(responseMessage, (int)HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(LabelConstants.InternalServerErrorMsg);
             }
         }
     }
