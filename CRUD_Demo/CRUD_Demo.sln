@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUD_Demo", "CRUD_Demo.csproj", "{9351642C-0CC8-4F20-B5D9-DFB532BA4C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{40E49354-4DA2-4718-9BCB-DBF366AFD765}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{40E49354-4DA2-4718-9BCB-DBF366AFD765}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{AF45E8D6-1CDE-4E1A-A917-AE65DDAA6824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.csproj", "{AF45E8D6-1CDE-4E1A-A917-AE65DDAA6824}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{A66FE59D-4D93-4867-9523-2D36B883ACD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common.csproj", "{A66FE59D-4D93-4867-9523-2D36B883ACD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{BBF40AA5-7B9D-491B-9283-B825C0FD1481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A66FE59D-4D93-4867-9523-2D36B883ACD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A66FE59D-4D93-4867-9523-2D36B883ACD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A66FE59D-4D93-4867-9523-2D36B883ACD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBF40AA5-7B9D-491B-9283-B825C0FD1481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBF40AA5-7B9D-491B-9283-B825C0FD1481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF40AA5-7B9D-491B-9283-B825C0FD1481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF40AA5-7B9D-491B-9283-B825C0FD1481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
